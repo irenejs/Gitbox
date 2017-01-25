@@ -23,4 +23,3 @@ java -jar gitbox-1.0.jar /Users/myuser/Gitbox https://github.com/gitboxmaster/Gi
 - Project is using solid JGit client which is pure Java, so project should be runnable on any platform with Java.  
 - Synchronization frequency currently is hard-coded (Main.MONITORING_INTERVAL_IN_SEC) to be 20 sec.  
 - Currently, when synching from remote if there are conflicts (after pull) - nothing is done about it.  
-

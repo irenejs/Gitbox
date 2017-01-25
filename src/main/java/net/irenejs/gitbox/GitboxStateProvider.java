@@ -6,11 +6,9 @@ import java.util.Map;
 
 import org.apache.log4j.Logger;
 
-
-
 public class GitboxStateProvider implements IStateProvider{
 	
-	private static Logger LOG = Logger.getLogger(GitboxStateProvider.class.getName());
+	private static Logger LOG = Logger.getLogger(GitboxStateProvider.class);
 
 	private State state = State.NOT_INITIALIZED;
 	private Map<String, String> context = new HashMap<>();
@@ -32,8 +30,7 @@ public class GitboxStateProvider implements IStateProvider{
 		for (int i = 0; i < contextValues.length; i++) {
 			int keyIndex = i;
 			int valueIndex = i+1;
-			if (valueIndex <= contextValues.length)
-			{	
+			if (valueIndex <= contextValues.length) {	
 				context.put(contextValues[keyIndex], contextValues[valueIndex]);
 				i++;
 			}
@@ -43,16 +40,13 @@ public class GitboxStateProvider implements IStateProvider{
 	
 	@Override
 	public void updateIfNoError(State state, String... contextValues) {
-		if (this.state!=State.ERROR)
-		{
+		if (this.state != State.ERROR) {
 			update(state, contextValues);
 		}
-		
 	}
 	
 	private void stateUpdated(State oldState, State newState, Map<String, String> updatedContext) {
 		LOG.info("previousState="+oldState+" newState="+newState);
 	}
 	
-
 }

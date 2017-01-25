@@ -8,7 +8,6 @@ import java.util.TimerTask;
 
 import net.irenejs.gitbox.IStateProvider.State;
 
-
 public class Gitbox {
 	
 	public static final String REPO_NAME = "gitbox";
@@ -30,8 +29,7 @@ public class Gitbox {
 		this.pwd = pwd;
 	}
 	
-	public void init() {
-		
+	public void init() {	
 		stateProvider = new GitboxStateProvider();
 		stateProvider.update(State.INITIALIZING);
 		
@@ -49,7 +47,7 @@ public class Gitbox {
 	}
 	
 	public void monitor(int monitoringIntervalInSec) {
-		if (timer!=null) {
+		if (timer != null) {
 			timer.cancel();
 		}
 		timer = new Timer("Gitbox timer", false);
@@ -57,8 +55,7 @@ public class Gitbox {
 		timer.schedule(new TimerTask() {
 			
 			@Override
-			public void run() {
-				
+			public void run() {			
 				stateProvider.update(State.SYNCHRONIZING, "synchStart", new Date().toString(), "synchEnd", null);
 				
 				localCopy.localSynch();
@@ -69,6 +66,4 @@ public class Gitbox {
 		}, monitoringIntervalInSec*1000, monitoringIntervalInSec*1000);
 	}
 	
-	
-
 }

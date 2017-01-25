@@ -13,8 +13,7 @@ import org.junit.Test;
 
 public class GitboxTest {
 	
-	public static void deleteDir(Path directory) throws IOException
-	{
+	public static void deleteDir(Path directory) throws IOException {
 		Files.walk(directory, FileVisitOption.FOLLOW_LINKS)
 		    .sorted(Comparator.reverseOrder())
 		    .map(Path::toFile)
@@ -23,11 +22,9 @@ public class GitboxTest {
 	}
 
 	@Test
-	public void testCreateNewLocal() throws Exception
-	{
+	public void testCreateNewLocal() throws Exception {
 		Path path = Paths.get("/tmp/test");
-		if (Files.exists(path))
-		{
+		if (Files.exists(path)) {
 			deleteDir(path);
 		}
 		
